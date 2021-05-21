@@ -5,10 +5,14 @@ MicroModal.init({
     scrollLock.disablePageScroll(elm);
   },
   onClose: function (modal, element, event) {
+    modal.querySelectorAll("iframe").forEach((iframe) => {
+      iframe.setAttribute("src", iframe.getAttribute("src"));
+    });
+
     event.preventDefault();
     event.stopPropagation();
     scrollLock.enablePageScroll(elm);
-  }
+  },
 });
 
 //アドレスバー・タブバーを除いた高さの取得
